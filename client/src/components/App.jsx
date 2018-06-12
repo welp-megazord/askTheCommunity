@@ -24,11 +24,10 @@ class App extends Component {
     onSubmitHandler() {
         axios.get(`/api/questions/${this.state.restaurantId}`)
           .then(({data}) => {
-              console.log('Data back on the client', data);
               this.setState({
                   questions: data,
                   passedQuestions: [data[0], data[1]]
-              }, () => console.log('One question set state...', this.state));
+              });
           })
           .catch(err => {
               console.log('Error getting data on client...', err);

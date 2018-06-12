@@ -4,7 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 //local imports
 import Question from './Question.jsx';
-import Seeder from './Seeder.jsx';
+// import Seeder from './Seeder.jsx';
 
 class App extends Component {
     constructor() {
@@ -94,11 +94,6 @@ class App extends Component {
             border-bottom-width: 1px;
             border-bottom-style: solid;
         `;
-
-        // const NoQuestion = styled.p`
-        //     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        //     margin-bottom: 12px;
-        // `
         
         return(
             <div>
@@ -106,17 +101,6 @@ class App extends Component {
                <button onClick={() => this.onSubmitHandler()}>Get Questions</button> <br/>
                <Header>Ask The Community</Header>
                {this.conditionalRender()}
-               {/* {this.state.passedQuestions.map((question) => {
-                   return (
-                       <div>
-                         <Question data={question.user_id} message={question.text} qid={question.id} />
-                       </div>
-                   )
-               })}
-               <br/>
-               <a href="#">See all {this.state.questions.length} questions</a> <br/> */}
-               
-               {/* <Seeder /> */}
             </div>
         )
     }

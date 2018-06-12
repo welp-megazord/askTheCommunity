@@ -3,7 +3,6 @@ import axios from 'axios';
 import moment from 'moment';
 import styled from 'styled-components';
 
-import Answer from './Answer.jsx';
 
 class Answers extends Component {
     constructor(props) {
@@ -18,7 +17,6 @@ class Answers extends Component {
             time: '',
             helpful: ''
         }
-        console.log('Answer props...', this.props);
     }
 
     componentDidMount() {

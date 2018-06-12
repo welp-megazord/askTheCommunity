@@ -24,8 +24,36 @@ test('it should call componentDidMount', () => {
 })
 
 test('it should call conditionalRenderHelpful', () => {
-    sinon.spy(Answers.prototype, 'conditionalRenderHelpful');
+    // sinon.spy(Answers.prototype, 'conditionalRenderHelpful');
+    const conditionalRenderHelpful = jest.fn();
     const wrapper = mount(<Answers />);
-    console.log(Answers.prototype);
-    // expect(Answers.prototype.conditionalRenderHelpful.calledOnce).toEqual(true);
+    conditionalRenderHelpful();
+    console.log(conditionalRenderHelpful);
+    expect(conditionalRenderHelpful).toHaveBeenCalled();
+})
+
+test('should render correctly when helpful is null', () => {
+    const conditionalRenderHelpful = jest.fn();
+    const container = document.createElement('div');
+    ReactDOM.render(<Answers />, container);
+    conditionalRenderHelpful();
+    expect(container.textContent).toMatch('');
+})
+
+test('should render correctly when helpful is 1', () => {
+    const wrapper = mount(<Answers />);
+    wrapper.setState({
+        helpful: 1
+    });
+    expect(wrapper.instance().conditionalRenderHelpful()).toEqual('• 1 person found this helpful');
+
+})
+
+test('should render correctly when helpful is greater than 1', () => {
+    const wrapper = mount(<Answers />);
+    wrapper.setState({
+        helpful: 5
+    });
+    expect(wrapper.instance().conditionalRenderHelpful()).toEqual('• 5 people found this helpful');
+
 })

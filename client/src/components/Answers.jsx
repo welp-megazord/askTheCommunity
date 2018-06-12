@@ -40,7 +40,6 @@ class Answers extends Component {
     getAnswers() {
         axios.get(`/api/getAnswers/${this.props.id}`)
           .then(({data}) => {
-            //   console.log('Answer data back from server...', data);
               this.setState({
                   answers: [...this.state.answers, data],
                   text: data.text,
@@ -143,5 +142,3 @@ class Answers extends Component {
 
 export default Answers;
 
-
-// {this.state.helpful === null ? '' : `• ${this.state.helpful} people found this helpful`}

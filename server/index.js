@@ -3,6 +3,7 @@ const parser = require('body-parser');
 const path = require('path');
 const { User } = require('../database/schemas.js');
 const { Question } = require('../database/schemas.js');
+const cors = require('cors');
 const PORT = 3000;
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
 
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
+app.use(cors());
 
 app.post('/api/questions', (req, res) => {
    console.log("'Hit endpoint on server...", req.body);

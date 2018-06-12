@@ -4,11 +4,6 @@ import App from '../components/App.jsx';
 import sinon from 'sinon';
 import { shallow, mount } from 'enzyme';
 
-// describe('addition', () => {
-//     it('knows that 2 and 2 is 4', () => {
-//         expect(2 + 2).toBe(4);
-//     })
-// })
 
 test('should render header', () => {
     const container = document.createElement('div');
@@ -27,9 +22,48 @@ test('it should initialize with an empty passedQuestions array', () => {
 })
 
 test('it should render correctly when no questions are found', () => {
-    const wrapper = mount(<App />);
-    wrapper.instance().conditionalRender()
-    expect(wrapper.textContent).toMatch('Yelp users haven\'t asked any questions yet about this restaurant.');
+    const conditionalRender = jest.fn();
+    const container = document.createElement('div');
+    ReactDOM.render(<App />, container);
+    conditionalRender();
+    // console.log(JSON.stringify(wrapper));
+    expect(container.textContent).toMatch('Yelp users haven\'t asked any questions yet about this restaurant.');
 })
 
-// wrapper.instance().method()
+test('it should render correctly when no questions are found', () => {
+    const conditionalRender = jest.fn();
+    const container = document.createElement('div');
+    ReactDOM.render(<App />, container);
+    conditionalRender();
+    // console.log(JSON.stringify(wrapper));
+    expect(container.textContent).toMatch('Yelp users haven\'t asked any questions yet about this restaurant.');
+})
+
+test('it should call componentDidMount', () => {
+    sinon.spy(App.prototype, 'componentDidMount')
+    const wrapper = mount(<App />);
+    expect(App.prototype.componentDidMount.calledOnce).toEqual(true);
+})
+
+test('it should call onSubmitHandler', () => {
+    sinon.spy(App.prototype, 'onSubmitHandler')
+    const wrapper = mount(<App />);
+    expect(App.prototype.onSubmitHandler.calledOnce).toEqual(true);
+})
+
+test('should render correctly when more than one question', () => {
+    const wrapper = mount(<App />);
+    wrapper.setState({
+        passedQuestions: ['This is a question', 'Another question']
+    });
+    console.log('State check....', wrapper.state());
+    expect(wrapper.conditionalRender()).toEqual('This is a question');
+})
+
+// test('should not render  when question is undefined', () => {
+//     const wrapper = mount(<App />);
+//     wrapper.setState({
+//         passedQuestions: ['This is a quesiton', undefined]
+//     });
+//     expect(wrapper.instance().conditionalRender()).toEqual('This is a question');
+// })

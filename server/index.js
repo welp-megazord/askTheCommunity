@@ -4,7 +4,7 @@ const path = require('path');
 const { User } = require('../database/schemas.js');
 const { Question } = require('../database/schemas.js');
 const cors = require('cors');
-const PORT = 3000;
+const PORT = 8080;
 
 const app = express();
 

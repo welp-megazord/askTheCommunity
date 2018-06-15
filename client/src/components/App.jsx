@@ -4,22 +4,22 @@ import axios from 'axios';
 import styled from 'styled-components';
 //local imports
 import Question from './Question.jsx';
-// import Seeder from './Seeder.jsx';
+
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-          restaurantId: '',
+          restaurantId: '1',
           passedQuestions: [],
           questions: []
         }
     }
     
 
-    componentDidMount() {
-        this.onSubmitHandler();
-    }
+    // componentDidMount() {
+    //     this.onSubmitHandler();
+    // }
 
     onSubmitHandler() {
         axios.get(`/api/questions/${this.state.restaurantId}`)
@@ -34,11 +34,11 @@ class App extends Component {
           })
     }
 
-    // onChangeHandler(e) {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     }, () => console.log(this.state));
-    // }
+    onChangeHandler(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        }, () => console.log(this.state));
+    }
 
     conditionalRender() {
         const NoQuestion = styled.p`
@@ -101,8 +101,8 @@ class App extends Component {
         
         return(
             <div>
-               {/* Enter Restaurant Id: <input name="restaurantId" onChange={(e) => this.onChangeHandler(e)} />
-               <button onClick={() => this.onSubmitHandler()}>Get Questions</button> <br/> */}
+               Enter Restaurant Id: <input name="restaurantId" onChange={(e) => this.onChangeHandler(e)} />
+               <button onClick={() => this.onSubmitHandler()}>Get Questions</button> <br/>
                <Header>Ask The Community</Header>
                {this.conditionalRender()}
             </div>

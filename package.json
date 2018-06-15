@@ -25,6 +25,9 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
     "express": "^4.16.3",
+    "grunt": "^1.0.3",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-ssh": "^0.12.9",
     "helmet": "^3.12.1",
     "jest": "^23.1.0",
     "moment": "^2.22.2",
@@ -40,6 +43,7 @@
     "webpack": "^4.10.2"
   },
   "devDependencies": {
+    "grunt-aws": "^0.6.2",
     "webpack-cli": "^2.1.4"
   }
 }

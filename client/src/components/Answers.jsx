@@ -24,7 +24,7 @@ class Answers extends Component {
     }
 
     getPhoto() {
-        axios.get(`api/getPhoto/${this.state.user_id}`)
+        axios.get(`http://18.144.13.22/api/getPhoto/${this.state.user_id}`)
           .then(({data}) => {
             //   console.log('Image data from user_id', data);
               this.setState({
@@ -38,7 +38,7 @@ class Answers extends Component {
     }
 
     getAnswers() {
-        axios.get(`/api/getAnswers/${this.props.id}`)
+        axios.get(`http://18.144.13.22/api/getAnswers/${this.props.id}`)
           .then(({data}) => {
               this.setState({
                   answers: [...this.state.answers, data],

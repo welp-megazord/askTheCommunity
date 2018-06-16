@@ -45,7 +45,8 @@ app.post('/api/users', (req, res) => {
     })
 })
 
-app.get('/api/questions/:id', (req, res) => {
+app.get('http://18.144.13.22/api/questions/:id', (req, res) => {
+    console.log('HERE>>>>>>>', req.params)
     Question.findAll({
         where: {
             restaurant_id: req.params.id

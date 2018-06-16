@@ -3,7 +3,7 @@ services:
   web:
     image: questions
     ports:
-       - "80:8080"
+       - "8080:8080"
     networks: 
       [webnet]
    

@@ -22,7 +22,7 @@ class App extends Component {
     // }
 
     onSubmitHandler() {
-        axios.get(`/api/questions/${this.state.restaurantId}`)
+        axios.get(`http://18.144.13.22/api/questions/${this.state.restaurantId}`)
           .then(({data}) => {
               this.setState({
                   questions: data,

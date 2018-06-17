@@ -4,7 +4,11 @@ const path = require('path');
 const { User } = require('../database/schemas.js');
 const { Question } = require('../database/schemas.js');
 const cors = require('cors');
-const PORT = 8080;
+const PORT = process.env.PORT || 3000;
+// const corsOptions = {
+//     origin: 'http://18.144.13.22/',
+//     optionsSuccessStatus: 200
+//   };
 
 const app = express();
 
@@ -45,7 +49,7 @@ app.post('/api/users', (req, res) => {
     })
 })
 
-app.get('http://18.144.13.22/api/questions/:id', (req, res) => {
+app.get('/api/questions/:id', (req, res) => {
     console.log('HERE>>>>>>>', req.params)
     Question.findAll({
         where: {

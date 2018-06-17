@@ -10,19 +10,19 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-          restaurantId: '1',
+          restaurantId: '2',
           passedQuestions: [],
           questions: []
         }
     }
     
 
-    // componentDidMount() {
-    //     this.onSubmitHandler();
-    // }
+    componentDidMount() {
+        this.onSubmitHandler();
+    }
 
     onSubmitHandler() {
-        axios.get(`http://18.144.13.22/api/questions/${this.state.restaurantId}`)
+        axios.get(`http://13.57.215.133/api/questions/${this.state.restaurantId}`)
           .then(({data}) => {
               this.setState({
                   questions: data,
@@ -34,11 +34,11 @@ class App extends Component {
           })
     }
 
-    onChangeHandler(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        }, () => console.log(this.state));
-    }
+    // onChangeHandler(e) {
+    //     this.setState({
+    //         [e.target.name]: e.target.value
+    //     }, () => console.log(this.state));
+    // }
 
     conditionalRender() {
         const NoQuestion = styled.p`
@@ -101,8 +101,8 @@ class App extends Component {
         
         return(
             <div>
-               Enter Restaurant Id: <input name="restaurantId" onChange={(e) => this.onChangeHandler(e)} />
-               <button onClick={() => this.onSubmitHandler()}>Get Questions</button> <br/>
+               {/* Enter Restaurant Id: <input name="restaurantId" onChange={(e) => this.onChangeHandler(e)} />
+               <button onClick={() => this.onSubmitHandler()}>Get Questions</button> <br/> */}
                <Header>Ask The Community</Header>
                {this.conditionalRender()}
             </div>

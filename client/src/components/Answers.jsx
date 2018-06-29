@@ -24,39 +24,43 @@ class Answers extends Component {
     }
 
     getPhoto() {
-        axios.get(`http://54.183.62.32:3000/api/getPhoto/${this.state.user_id}`)
-          .then(({data}) => {
-            //   console.log('Image data from user_id', data);
-              this.setState({
-                  imageUrl: data.imageUrl,
-              })
+        // axios.get(`http://54.183.62.32:3000/api/getPhoto/${this.state.user_id}`)
+        // axios.get(`http://localhost:3000/api/getPhoto/${this.state.user_id}`)
+        //   .then(({data}) => {
+        //     //   console.log('Image data from user_id', data);
+        //       this.setState({
+        //           imageUrl: data.imageUrl,
+        //       })
 
-          })
-          .catch(err => {
-              console.log('Error getting photo for user...', err);
-          })
+        //   })
+        //   .catch(err => {
+        //       console.log('Error getting photo for user...', err);
+        //   })
     }
 
     getAnswers() {
-        axios.get(`http://54.183.62.32:3000/api/getAnswers/${this.props.id}`)
-          .then(({data}) => {
-              this.setState({
-                  answers: [...this.state.answers, data],
-                  text: data.text,
-                  user_id: data.user_id,
-                  time: data.createdAt,
-                  helpful: data.helpful
-              }, () => this.getPhoto());
-          })
-          .catch(err => {
-              console.log('Error getting answer back from the server', err);
-          })
+        console.log('this.props.id:', this.props.id)
+        // axios.get(`http://54.183.62.32:3000/api/getAnswers/${this.props.id}`)
+        axios.get(`http://localhost:3000/api/getAnswers/${this.props.id}`)
+            .then(({ data }) => {
+                console.log('data', data)
+                this.setState({
+                    answers: [...this.state.answers, data[0]],
+                    text: data[0].text,
+                    user_id: data[0].user_id,
+                    time: data[0].createdAt,
+                    helpful: data[0].helpful
+                }, () => this.getPhoto());
+            })
+            .catch(err => {
+                console.log('Error getting answer back from the server', err);
+            })
     }
 
     conditionalRenderHelpful() {
         if (this.state.helpful === null) {
             return '';
-        } else if (this.state.helpful === 1) { 
+        } else if (this.state.helpful === 1) {
             return '• 1 person found this helpful';
         } else {
             return `• ${this.state.helpful} people found this helpful`;
@@ -124,18 +128,18 @@ class Answers extends Component {
 
         return (
             this.state.answers.length > 0 ?
-            <Answer>
-              <Image src={this.state.imageUrl} /> 
-              <Text>{this.state.text} <br/>
-              <Time>{moment(this.state.time).fromNow()} {this.conditionalRenderHelpful()} </Time> <br/>
-              </Text>
-              <a href="#">View {this.state.answers.length} more answer</a>
-            </Answer>
-            :
-            <div>
-                <NoAnswer>Yelp users haven't answered this question yet</NoAnswer><br/>
-                <Button>Answer</Button>
-            </div>
+                <Answer>
+                    <Image src={this.state.imageUrl} />
+                    <Text>{this.state.text} <br />
+                        <Time>{moment(this.state.time).fromNow()} {this.conditionalRenderHelpful()} </Time> <br />
+                    </Text>
+                    <a href="#">View {this.state.answers.length} more answer</a>
+                </Answer>
+                :
+                <div>
+                    <NoAnswer>Yelp users haven't answered this question yet</NoAnswer><br />
+                    <Button>Answer</Button>
+                </div>
         )
     }
 }

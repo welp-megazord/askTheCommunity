@@ -22,8 +22,10 @@ class App extends Component {
     }
 
     onSubmitHandler() {
-        axios.get(`http://54.183.62.32:3000/api/questions/${this.state.restaurantId}`)
+        // axios.get(`http://54.183.62.32:3000/api/questions/${this.state.restaurantId}`)
+        axios.get(`http://localhost:3000/api/questions/${this.state.restaurantId}`)
           .then(({data}) => {
+              console.log('data:',data)
               this.setState({
                   questions: data,
                   passedQuestions: [data[0], data[1]]
@@ -83,6 +85,10 @@ class App extends Component {
                 })}
                 <br/>
                 <a href="#">See all {this.state.questions.length} questions</a> <br/>
+                <div>
+                <span>Dont see your question? Ask away!</span><br/>
+                <button>Ask a question</button>
+                </div>
                 </div>
             )
         }

@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "grunt-aws": "^0.6.2",
+    "newrelic": "^4.2.0",
     "webpack-cli": "^2.1.4"
   }
 }

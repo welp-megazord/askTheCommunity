@@ -10,12 +10,12 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-          restaurantId: '2',
-          passedQuestions: [],
-          questions: []
+            restaurantId: '2',
+            passedQuestions: [],
+            questions: []
         }
     }
-    
+
 
     componentDidMount() {
         this.onSubmitHandler();
@@ -24,16 +24,16 @@ class App extends Component {
     onSubmitHandler() {
         // axios.get(`http://54.183.62.32:3000/api/questions/${this.state.restaurantId}`)
         axios.get(`http://localhost:3000/api/questions/${this.state.restaurantId}`)
-          .then(({data}) => {
-              console.log('data:',data)
-              this.setState({
-                  questions: data,
-                  passedQuestions: [data[0], data[1]]
-              });
-          })
-          .catch(err => {
-              console.log('Error getting data on client...', err);
-          })
+            .then(({ data }) => {
+                console.log('data:', data)
+                this.setState({
+                    questions: data,
+                    passedQuestions: [data[0], data[1]]
+                });
+            })
+            .catch(err => {
+                console.log('Error getting data on client...', err);
+            })
     }
 
     // onChangeHandler(e) {
@@ -67,28 +67,28 @@ class App extends Component {
         if (this.state.questions.length === 0) {
             return (
                 <div>
-                    <NoQuestion>Yelp users haven't asked any questions yet about this restaurant.</NoQuestion> <br/>
+                    <NoQuestion>Yelp users haven't asked any questions yet about this restaurant.</NoQuestion> <br />
                     <Button>Ask a Question</Button>
                 </div>
             )
         } else {
             return (
                 <div>
-                {this.state.passedQuestions.map((question) => {
-                    if (question !== undefined) {
-                        return (
-                            <div>
-                              <Question data={question.user_id} message={question.text} qid={question.id} />
-                            </div>
-                        )
-                    }
-                })}
-                <br/>
-                <a href="#">See all {this.state.questions.length} questions</a> <br/>
-                <div>
-                <span>Dont see your question? Ask away!</span><br/>
-                <button>Ask a question</button>
-                </div>
+                    {this.state.passedQuestions.map((question) => {
+                        if (question !== undefined) {
+                            return (
+                                <div>
+                                    <Question data={question.user_id} message={question.text} qid={question.id} />
+                                </div>
+                            )
+                        }
+                    })}
+                    <br />
+                    <a href="#">See all {this.state.questions.length} questions</a> <br />
+                    <div>
+                        <span>Dont see your question? Ask away!</span><br />
+                        <button>Ask a question</button>
+                    </div>
                 </div>
             )
         }
@@ -104,13 +104,13 @@ class App extends Component {
             border-bottom-width: 1px;
             border-bottom-style: solid;
         `;
-        
-        return(
+
+        return (
             <div>
-               {/* Enter Restaurant Id: <input name="restaurantId" onChange={(e) => this.onChangeHandler(e)} />
+                {/* Enter Restaurant Id: <input name="restaurantId" onChange={(e) => this.onChangeHandler(e)} />
                <button onClick={() => this.onSubmitHandler()}>Get Questions</button> <br/> */}
-               <Header>Ask The Community</Header>
-               {this.conditionalRender()}
+                <Header>Ask The Community</Header>
+                {this.conditionalRender()}
             </div>
         )
     }

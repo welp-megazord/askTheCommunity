@@ -1,7 +1,7 @@
 config:
   target: 'http://localhost:3000'
   phases:
-    - duration: 10
+    - duration: 60
       arrivalRate: 20
 scenarios:
   - name: 'get request'
@@ -11,22 +11,22 @@ scenarios:
           - get:
               url: "/api/questions"
           - get: 
-              url: "/api/answers:id"
-  #       count: 100
+              url: "/api/answers"
+        count: 100
 
-  # - name: 'post request'
-  #   flow:
-  #     - loop:
-  #         - post:
-  #             url: "/api/questions"
-  #       count: 100
+  - name: 'post request'
+    flow:
+      - loop:
+          - post:
+              url: "/api/questions"
+        count: 10
 
-  # - name: 'delete request'
-  #   flow:
-  #   - delete:
-  #       url: "/api/questions"
+  - name: 'delete request'
+    flow:
+    - delete:
+        url: "/api/questions"
 
-  # - name: 'put request'
-  #   flow:
-  #   - put:
-  #       url: "/api/questions"
+  - name: 'put request'
+    flow:
+    - put:
+        url: "/api/questions"

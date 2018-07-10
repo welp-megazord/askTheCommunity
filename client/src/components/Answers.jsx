@@ -4,7 +4,7 @@ import moment from 'moment';
 import styled from 'styled-components';
 
 
-class Answers extends Component {
+export default class Answers extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +41,7 @@ class Answers extends Component {
     getAnswers() {
         console.log('this.props.id:', this.props.id)
         // axios.get(`http://54.183.62.32:3000/api/getAnswers/${this.props.id}`)
-        axios.get(`http://localhost:3000/api/getAnswers/${this.props.id}`)
+        axios.get(`/api/getAnswers/${this.props.id}`)
             .then(({ data }) => {
                 console.log('data', data)
                 this.setState({
@@ -71,29 +71,29 @@ class Answers extends Component {
     render() {
         // console.log('State check in Answers...', this.state)
         const Answer = styled.div`
-          margin-left: 6px;
-          margin-rigth: 6px;
-          border-collapse: collapse;
-          border-spacing: 0 0;
-          vertical-align: top;
+        margin-left: 6px;
+        margin-rigth: 6px;
+        border-collapse: collapse;
+        border-spacing: 0 0;
+        vertical-align: top;
         `
 
         const Text = styled.p`
-          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-          font-size: 16px;
-          vertical-align: top;
-          margin-left: 40px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        vertical-align: top;
+        margin-left: 40px;
         `
 
         const Time = styled.span`
         //    margin-left: 35px;
-           font-size: 12px;
-           line-height: 1.5em;
-           color: #999;
-           vertical-align: top;
-           padding-top: 5px;
+        font-size: 12px;
+        line-height: 1.5em;
+        color: #999;
+        vertical-align: top;
+        padding-top: 5px;
         //    padding-bottom: 8px;
-           display: inline-block;
+        display: inline-block;
         `
 
         const Image = styled.img`
@@ -144,5 +144,5 @@ class Answers extends Component {
     }
 }
 
-export default Answers;
+
 

@@ -5,8 +5,7 @@ import styled from 'styled-components';
 //local imports
 import Question from './Question.jsx';
 
-
-class App extends Component {
+export default class App extends Component {
     constructor() {
         super();
         this.state = {
@@ -23,7 +22,7 @@ class App extends Component {
 
     onSubmitHandler() {
         // axios.get(`http://54.183.62.32:3000/api/questions/${this.state.restaurantId}`)
-        axios.get(`http://localhost:3000/api/questions/${this.state.restaurantId}`)
+        axios.get(`/api/questions/${this.state.restaurantId}`)
             .then(({ data }) => {
                 console.log('data:', data)
                 this.setState({
@@ -116,4 +115,3 @@ class App extends Component {
     }
 }
 
-export default App;

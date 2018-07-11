@@ -6,4 +6,13 @@ aws-credentials.json
 pgdata
 newrelic_agent.log
 newrelic.js
+aws
+bundle.js
+bundle-server.js
+app.js
+app-server.js
+bower_components
+/client/dist/lib
+.env
+loaderio-*.txt
 

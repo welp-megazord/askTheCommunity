@@ -13,7 +13,6 @@ const cors = require('cors');
 const db = require('../database/mongoDB');
 
 const PORT = 3000;
-
 const app = express();
 
 app.use(parser.json());

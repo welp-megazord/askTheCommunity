@@ -5,7 +5,7 @@ import styled from 'styled-components';
 //local imports
 import Question from './Question.jsx';
 
-export default class App extends Component {
+class Questions extends Component {
     constructor() {
         super();
         this.state = {
@@ -115,3 +115,4 @@ export default class App extends Component {
     }
 }
 
+export default Questions;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/app.jsx';
+// import React, { Component } from 'react';
+// import ReactDOM from 'react-dom';
+// import App from './components/app.jsx';
 
-ReactDOM.render(<App />, document.getElementById('questions'));
+// ReactDOM.render(<App />, document.getElementById('questions'));
